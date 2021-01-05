@@ -1,0 +1,32 @@
+.plainlogin-container {
+  display: flex;
+  height: 100%;
+  width: 100%;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.plainlogin-img {
+  flex: 1 1 50%;
+  object-fit: cover;
+  height: 100%;
+  overflow: hidden;
+}
+
+.plainlogin-form-container {
+  flex: 1 1 50%;
+}
+
+.plainlogin-form {
+  height: 400px;
+  margin-left: 52px;
+  margin-right: 52px;
+  max-width: 412px;
+}
+
+@media (max-width: 768px) {
+  .plainlogin-img {
+    display: none;
+  }
+}

@@ -1,0 +1,97 @@
+.splash-page-container {
+  background-color: white;
+}
+
+.splash-header-left {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.splash-header-container {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  box-shadow: 0px 1px 4px 0px rgba(0, 0, 0, 0.2);
+  height: 64px;
+  padding: 0px 24px 0px 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: white;
+}
+
+.splash-header-menu-container {
+  display: flex;
+  flex-direction: row;
+}
+
+.down-arrow {
+  height: 12px;
+  width: 12px;
+}
+
+.splash-header-menu-item {
+  font-size: 18px;
+  line-height: 28px;
+  margin-left: 48px;
+}
+
+.splash-header-menu-item:hover {
+  cursor: pointer;
+  color: var(--splash-signup-hover-bg-color);
+}
+
+.splash-header-logo-container {
+  height: 35px;
+  width: 142px;
+}
+
+.splash-header-logo-container img {
+  margin: -52px 0px 0px 0px;
+}
+
+.splash-header-buttons-container {
+  display: flex;
+  flex-direction: row;
+  padding: 48px;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.splash-header-login-button-container {
+  margin-right: 30px;
+  line-height: 48px;
+}
+
+.splash-header-signup-button-container {
+  background-color: var(--splash-signup-bg-color);
+  height: 48px;
+  line-height: 48px;
+  padding: 0px 36px;
+  border-radius: 24px;
+  max-width: 144px;
+  text-align: center;
+}
+
+.signup-button {
+  color: black;
+}
+
+.splash-header-signup-button-container:hover {
+  cursor: pointer;
+  background-color: var(--splash-signup-hover-bg-color);
+}
+
+.login-button {
+  color: black;
+}
+
+.login-button:hover {
+  color: rgb(74, 184, 72);
+}
+
+.splash-header-buttons-container > span:hover {
+  cursor: pointer;
+}

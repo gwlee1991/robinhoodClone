@@ -1,0 +1,22 @@
+.timeline-bar-container {
+  border-bottom: 1px solid rgb(48, 52, 58);
+  display: flex;
+  align-items: left;
+}
+
+.timeline-button-container {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  margin-right: 24px;
+  font-weight: bold;
+}
+
+.timeline-button-container:hover {
+  color: #5ac53b;
+  cursor: pointer;
+}
+
+.timeline-button-container.selected {
+  border-bottom: 2px solid #5ac53b;
+  color: #5ac53b;
+}

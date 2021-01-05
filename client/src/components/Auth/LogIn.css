@@ -1,0 +1,123 @@
+.login-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.login {
+  height: 100%;
+  width: 750px;
+  padding-right: 15px;
+  padding-left: 15px;
+  padding-top: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 40px;
+}
+
+.login-form-section {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+}
+
+.login-form-header-container {
+  margin-bottom: 12px;
+  margin-top: 12px;
+}
+
+.login-form-header {
+  font-size: 21px;
+  font-weight: 500;
+  line-height: 28px;
+  letter-spacing: -0.1px;
+}
+
+.login-form-label-container {
+  padding: 9px 0px;
+  margin-bottom: 8px;
+}
+
+.login-form-input-container {
+  height: 36px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  padding-left: 12px;
+  padding-right: 12px;
+  border: 1px solid rgb(227, 233, 237);
+  background-color: rgb(255, 255, 255);
+  border-radius: 4px;
+}
+
+.login-form-input-container > input {
+  outline: none;
+  border: none;
+  padding: 0px;
+  margin-right: 0px;
+  margin-left: 0px;
+  height: 100%;
+  background: transparent;
+}
+
+.login-form-input-container:hover {
+  box-shadow: 0px 1px 4px 0px rgb(227, 233, 237);
+}
+
+.login-form-input-container:focus {
+  border: 1px solid var(--splash-signup-bg-color);
+}
+
+.login-form-demo-container {
+  padding: 14px 0px;
+}
+
+.login-form-demo-text:hover {
+  cursor: pointer;
+}
+
+.login-form-demo-text {
+  font-size: 13px;
+  line-height: 1.2;
+  letter-spacing: 0.25px;
+  color: var(--splash-signup-bg-color);
+}
+
+.login-form-footer {
+  margin-top: 24px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.login-form-signin-button {
+  border: 1px solid transparent;
+  border-radius: 4px;
+  cursor: pointer;
+  height: 48px;
+  min-width: 120px;
+  padding: 0 48px;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--splash-signup-bg-color);
+  color: white;
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 20px;
+  letter-spacing: -0.1px;
+}
+
+.login-form-signin-button:hover {
+  background-color: var(--splash-signup-hover-bg-color);
+}
+
+.login-disclosure-section {
+  border-top: 1px solid rgb(180, 189, 194);
+}

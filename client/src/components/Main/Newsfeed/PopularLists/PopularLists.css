@@ -1,0 +1,46 @@
+.popular-lists-container {
+  display: flex;
+  flex-direction: column;
+  padding: 24px 0px;
+}
+
+.popular-lists-header {
+  margin-bottom: 24px;
+}
+
+.popular-lists-header > span {
+  font-size: 21px;
+  font-weight: bold;
+  display: block;
+  float: left;
+}
+
+.popular-lists-item-container {
+  display: block;
+  float: left;
+  margin-bottom: 8px;
+  margin-right: 8px;
+}
+
+.popular-lists-item {
+  display: inline-flex;
+  border: 1px solid rgb(48, 54, 58);
+  align-items: center;
+  height: 36px;
+  padding-right: 16px;
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: 400;
+}
+
+.popular-lists-item-img {
+  width: 24px;
+  height: 24px;
+  border-radius: 12px;
+  margin: 0px 8px 0px 6px;
+}
+
+.popular-lists-item:hover {
+  cursor: pointer;
+  background-color: rgb(64, 73, 78);
+}

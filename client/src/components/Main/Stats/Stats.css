@@ -1,0 +1,30 @@
+.stats {
+  color: white;
+  flex-direction: column;
+  margin-left: 48px;
+  height: 727px;
+  overflow: hidden;
+  flex: 33.34%;
+}
+
+.stats-container {
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #1e2023;
+  border-radius: 5px;
+  border: 1px solid #42494d;
+  font-size: 16px;
+  height: 100%;
+}
+
+.stats-header {
+  display: flex;
+  font-size: 16px;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid #42494d;
+  border-top: 1px solid #42494d;
+  padding: 20px;
+  font-weight: 500;
+}

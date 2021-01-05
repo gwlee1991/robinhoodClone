@@ -1,0 +1,46 @@
+.newsfeed {
+  flex: 66.67%;
+  color: white;
+}
+
+.newsfeed-portfolio {
+  text-align: left;
+  font-weight: 700;
+  margin-bottom: 12px;
+  height: 95px;
+  margin-bottom: 12px;
+}
+
+.newsfeed-portfolio h1 {
+  margin: 0;
+}
+
+.newsfeed-portfolio span {
+  margin-top: 10px;
+  padding-right: 2px;
+}
+
+.newsfeed-chart {
+  width: 100%;
+}
+
+.newsfeed-chart-section {
+  display: flex;
+  flex-direction: column;
+}
+
+.newsfeed-portfolio-status {
+  display: flex;
+  flex-direction: row;
+  justify-content: left;
+  align-items: center;
+}
+
+.text.light.normal {
+  color: rgb(121, 133, 139);
+  font-weight: 400;
+}
+
+.newsfeed-buying-power {
+  margin-bottom: 60px;
+}

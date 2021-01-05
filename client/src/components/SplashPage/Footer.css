@@ -1,0 +1,41 @@
+.footer-container {
+  background-color: black;
+  color: white;
+  width: 100%;
+  padding-top: 36px;
+  padding-bottom: 36px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.footer-disclosure-container {
+  text-align: left;
+  margin-top: 24px;
+  margin-bottom: 24px;
+  width: 80%;
+  min-width: 780px;
+  max-width: 1280px;
+}
+
+.footer-contact-info a {
+  text-decoration: none;
+  color: white;
+}
+
+.footer-contact-info {
+  margin-top: 8px;
+  margin-bottom: 8px;
+}
+
+.footer-contact-info span {
+  padding-right: 4px;
+}
+
+.footer-disclosure-text {
+  font-size: 18px;
+  font-weight: normal;
+  line-height: 24px;
+  letter-spacing: -0.1px;
+}
