@@ -20,7 +20,7 @@ class App extends React.Component {
     }
   }
 
-  componentDidMount(){
+  componentDidMount = () => {
     this.props.getCurrentUser().then(() => {
       this.setState({
         load: 'done'
@@ -34,9 +34,6 @@ class App extends React.Component {
         <ProtectedRoute path="/" component={Main} />
       )
     } else {
-      const splashPage = <div className="app-splash">
-        <SplashPage />
-      </div>
       return <Route path="/" exact component={SplashPage} />
     }
   }
@@ -59,7 +56,9 @@ class App extends React.Component {
               </Switch>
             </Router>
           </div>
-        );
+        )
+      default:
+        return <div></div>;
     }
   }
 }

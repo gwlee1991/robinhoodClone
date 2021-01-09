@@ -1,23 +1,127 @@
 .buying-power-card {
-  border-radius: 5px;
+  border-radius: 4px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 15px;
 }
 
 .buying-power-card-header {
+  padding-top: 3.2vh;
+  font-size: 1.8vh;
+  font-weight: bold;
+  width: 110%;
+  padding-right: 34px;
+  padding-left: 34px;
+  border-radius: 4px;
+}
+
+.buying-power-header-container {
+  width: 100%;
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  border-bottom: 1px solid rgb(48, 52, 58);
-  padding-top: 3.2vh;
   padding-bottom: 3.2vh;
-  font-size: 1.8vh;
-  font-weight: bold;
+  border-bottom: 1px solid rgb(48, 54, 58);
 }
 
 .buying-power-card-header:hover {
   cursor: pointer;
+  background-color: rgb(64, 73, 78);
 }
 
-.buying-power-card:hover {
-  background-color: rgb(64, 73, 78);
+.buying-power-card-header.expand {
+  background-color: rgb(30, 33, 36);
+  border-bottom-left-radius: 0px;
+  border-bottom-right-radius: 0px;
+}
+
+.buying-power-expand {
+  will-change: height;
+  width: 110%;
+  padding-right: 34px;
+  padding-left: 34px;
+  background-color: rgb(30, 33, 36);
+  border-bottom-left-radius: 4px;
+  border-bottom-right-radius: 4px;
+  padding-bottom: 3.2vh;
+  padding-top: 3.2vh;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.buying-power-expand-section {
+  width: 50%;
+}
+
+.buying-power-expand-section.right {
+  padding-left: 36px;
+}
+
+.buying-power-expand-label {
+  margin-bottom: 26px;
+  display: flex;
+  flex-direction: row;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 24px;
+  letter-spacing: -0.1px;
+  padding-bottom: 26px;
+}
+
+.buying-power-expand-label.border-bottom {
+  border-bottom: 1px solid rgb(48, 54, 58);
+}
+
+.buying-power-expand-label.more {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 0px;
+}
+
+.buying-power-more {
+  color: rgb(255, 198, 87);
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 20px;
+  letter-spacing: -0.1px;
+}
+
+.label-title {
+  width: 70%;
+  text-align: left;
+}
+
+.label-value {
+  width: 30%;
+  text-align: right;
+}
+
+.deposit-funds-button-container {
+  background-color: rgb(0, 200, 5);
+  width: 100%;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 55px;
+  border-radius: 4px;
+}
+
+.deposit-funds-button-container:hover {
+  cursor: pointer;
+  background-color: rgba(38, 208, 43, 1);
+}
+
+.deposit-funds-button-container > span {
+  color: rgb(30, 33, 36);
+  font-size: 15px;
+  font-weight: 700;
+  text-decoration: unset;
+  line-height: 20px;
+  letter-spacing: -0.1px;
 }

@@ -5,7 +5,7 @@ const signature = require('../configs').jwtSecret;
 
 const generateToken = ({ _id, firstName, lastName, email }) => {
 	const data = { _id, firstName, lastName, email };
-	const expiration = 60 * 1000 * 15; // 15 minutes
+	const expiration = 60 * 1000 * 60 * 24; // 1 day
 	return jwt.sign({ data }, signature, { expiresIn: expiration });
 }
 
@@ -17,15 +17,23 @@ const sendToken = (res, user) => {
 		firstName: user.firstName,
 		lastName: user.lastName,
 		email: user.email,
-		watchList: user.watchList,
+		watchLists: user.watchLists,
 		buyingPower: user.buyingPower,
-		ownedStocks: user.ownedStocks
+		ownedStocks: user.ownedStocks,
+		phoneNumber: user.phoneNumber,
+		address1: user.address1,
+		address2: user.address2,
 	})
 }
 
 const signUp = async (req, res) => {
 	const errors = [];
-	const defaultWatchList = ['AAPL', 'MSFT', 'GOOGL', 'AMZN', 'TSLA', 'NFLX'];
+	const defaultWatchLists = [
+		{
+			name: 'My First List',
+			stocks: ['AAPL', 'MSFT', 'GOOGL', 'AMZN', 'TSLA', 'NFLX']
+		}
+	];
 	const defaultOwnedStocks = [];
 	try {
 		const { firstName, lastName, email, password } = req.body;
@@ -47,7 +55,7 @@ const signUp = async (req, res) => {
 			email: email,
 			passwordDigest: passwordDigest,
 			ownedStocks: defaultOwnedStocks,
-			watchList: defaultWatchList
+			watchLists: defaultWatchLists
 		}).save();
 		sendToken(res, user);
 	} catch (err) {
@@ -101,6 +109,63 @@ const demoLogin = async (req, res) => {
 	}
 }
 
+const addWatchList = async (req, res) => {
+	try {
+		const { _id } = req.user;
+		const user = await User.findById(_id);
+		const { watchListName } = req.body;
+		const existsDuplicateName = () => {
+			let exists = false;
+			user.watchLists.forEach(list => {
+				if (list.name === watchListName) {
+					exists = true;
+				}
+			})
+			return exists;
+		}
+		if (existsDuplicateName(watchListName)) {
+			throw { name: 'Duplicate Entry', message: 'Same watch list name already exists.'};
+		}
+
+		user.watchLists.push({ name: watchListName });
+		await user.save();
+		sendToken(res, user);
+	} catch (err) {
+		console.log(err);
+		if (err.name === 'Duplicate Entry') {
+			res.status(409).send([err.message]);
+		} else {
+			res.status(400).send(['Unknown error has occurred.']);
+		}
+	}
+}
+
+const deleteWatchList = async (req, res) => {
+
+}
+
+const addStockToWatchList = () => {}
+const removeStockToWatchList = () => {}
+
+const addBuyingPower = async(req, res) => {
+	const { _id } = req.user;
+	try {
+		let user = await User.findById(_id);
+		const { buyingPower } = req.body;
+		if (parseInt(buyingPower) < 0) throw { name: "Invalid Entry", message: ['Please enter a valid amount.']}
+		user.buyingPower += parseInt(buyingPower);
+		user = await user.save()
+		sendToken(res, user);
+	} catch(err) {
+		switch (err.name) {
+			case "Invalid Entry":
+				res.status(422).send(err.message);
+			default:
+				res.status(400).send(['Unknown error has occurred.']);
+		}
+	}
+}
+
 module.exports = {
-	signUp, logIn, getCurrentUser, demoLogin
+	signUp, logIn, getCurrentUser, demoLogin, addWatchList, addBuyingPower
 }

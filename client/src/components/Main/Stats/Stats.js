@@ -2,24 +2,33 @@ import React from 'react'
 import "./Stats.css";
 import StatsRow from './StatsRow/StatsRow';
 import { connect } from 'react-redux';
-import * as dataApi from '../../../api/dataApi';
+import WatchList from './WatchList/WatchList';
+import { addWatchList } from '../../../actions/portfolio';
 
 class Stats extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       ownedStocks: [],
-      watchlistStocks: []
+      showForm: false,
+      watchListName: '',
+      inputFocused: false
     }
   }
 
-  componentDidMount(){
-    if (this.props.currentUser) {
-      dataApi.getWatchlistStocksData().then(data => {
-        this.setState({
-            watchlistStocks: data
-        });
-      })
+  renderForm = () => {
+    if (this.state.showForm) {
+      return (
+        <div className="watchlist-form-container">
+          <div className={this.state.inputFocused ? "input-container focused" : "input-container"}>
+            <input onBlur={() => this.setState({ inputFocused: false })} onFocus={() => this.setState({ inputFocused: true })} onChange={e => this.setState({ watchListName: e.target.value })} type="text" placeholder="List Name" value={this.state.watchListName} />
+          </div>
+          <div className="buttons-container">
+            <div className="cancel-button small-text" onClick={e => this.setState({ showForm: false, watchListName: ''})}>Cancel</div>
+            <div className="create-list-button small-text" onClick={() => this.props.addWatchList(this.state.watchListName)}>Create List</div>
+          </div>
+        </div>
+      )
     }
   }
 
@@ -44,17 +53,14 @@ class Stats extends React.Component {
             </div>
           </div>
           <div className="stats-header">
-            <p>Lists</p>
+            <span>Lists</span>
+            <span className="green-hover" style={{ fontWeight: '700', fontSize: '20px'}} onClick={e => { this.setState({showForm: true})}}>+</span>
           </div>
+          {this.renderForm()}
           <div className="stats-content">
             <div className="stats-rows">
-              {this.state.watchlistStocks.map(stock => {
-                return <StatsRow 
-                  key={stock.name}
-                  name={stock.name}
-                  openPrice={stock.info.o}
-                  price={stock.info.pc}
-                />
+              {this.props.currentUser.watchLists.map(watchlist => {
+                return <WatchList key={watchlist.name} watchlist={watchlist} />
               })}
             </div>
           </div>
@@ -72,7 +78,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-
+    addWatchList: watchListName => dispatch(addWatchList(watchListName))
   }
 }
 

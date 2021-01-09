@@ -1,0 +1,29 @@
+.modal-container {
+  color: white;
+  position: absolute;
+  background-color: black;
+  z-index: 101;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  padding-top: 120px;
+}
+
+.x {
+  position: fixed;
+  top: 36px;
+  right: 36px;
+  font-size: 24px;
+  height: 52px;
+  width: 52px;
+  border-radius: 26px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.x:hover {
+  cursor: pointer;
+  background-color: rgb(30, 33, 36);
+}

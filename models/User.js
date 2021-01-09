@@ -23,7 +23,7 @@ const userSchema = new Schema({
 		type: Number,
 		required: true
 	},
-	portforlioValue: {
+	portfolioValue: {
 		default: 0,
 		type: Number,
 		required: true
@@ -35,8 +35,11 @@ const userSchema = new Schema({
 			numberOfStocks: Number,
 		}
 	],
-	watchList: [
-		String
+	watchLists: [
+		{
+			name: String,
+			stocks: [String]
+		}
 	],
 	phoneNumber: {
 		default: "",

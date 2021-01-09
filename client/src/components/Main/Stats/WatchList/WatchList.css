@@ -1,0 +1,40 @@
+.watchlist-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  height: 60px;
+}
+
+.watchlist-name {
+  margin: 20px;
+}
+
+.watchlist-buttons {
+  margin: 10px 20px 10px 20px;
+  display: flex;
+  flex-direction: row;
+  padding-bottom: 4pxs;
+}
+
+.watchlist-buttons > span {
+  margin-bottom: 4px;
+}
+
+.watchlist-more-button {
+  margin-right: 20px;
+  font-weight: 700;
+  font-size: 20px;
+  padding-bottom: 10px;
+}
+
+.watchlist-expand-button {
+  margin-left: 20px;
+  font-weight: 700;
+  padding-top: 4px;
+}
+
+.watchlist-container:hover {
+  cursor: pointer;
+  background-color: #31363a;
+}

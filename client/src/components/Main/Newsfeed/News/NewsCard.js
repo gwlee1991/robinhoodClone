@@ -1,7 +1,7 @@
 import React from 'react';
 
 function NewsCard(props) {
-	const { source, image, summary, headline, id, url, datetime } = props.news;
+	const { source, image, summary, headline, id, url } = props.news;
 	const thumbnailClassname = props.top ? "news-item-thumbnail big" : "news-item-thumbnail small";
 	const renderSummary = () => {
 		if (props.top) {
@@ -12,8 +12,8 @@ function NewsCard(props) {
 	}
 
 	const showElapsedTime = () => {
-		const now = Date.now();
-		const elapsedMilliseconds = now - datetime;
+		// const now = Date.nsow();
+		// const elapsedMilliseconds = now - datetime;
 		return "1h";
 	}
 

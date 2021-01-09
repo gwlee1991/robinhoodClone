@@ -5,12 +5,17 @@ export const getOwnedStocksData = async () => {
 	return res.data;
 }
 
-export const getWatchlistStocksData = async () => {
-	const res = await axios.get('/api/v1/data/watchlist');
+export const getWatchlistStocksData = async (name) => {
+	const res = await axios.get(`/api/v1/data/watchlist?watchlistName=${name}`);
 	return res.data;
 }
 
 export const getNewsData = async () => {
 	const res = await axios.get('/api/v1/data/news');
+	return res.data;
+}
+
+export const querySearch = async (searchTerm) => {
+	const res = await axios.get(`/api/v1/data/search?searchTerm=${searchTerm}`);
 	return res.data;
 }

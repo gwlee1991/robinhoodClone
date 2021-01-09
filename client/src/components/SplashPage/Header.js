@@ -51,11 +51,9 @@ function Header() {
 				</div>
 			</div>
 			<div className="splash-header-buttons-container">
-				<Link to="/login">
-					<div className="splash-header-login-button-container text-color-black">
-						<span className="login-button">Log In</span>
-					</div>
-				</Link>
+				<div className="splash-header-login-button-container text-color-black">
+					<Link to="/login"><span className="login-button">Log In</span></Link>
+				</div>
 				<Link to="/signup">
 					<div className="splash-header-signup-button-container text-color-black">
 						<span className="signup-button">Sign Up</span>

@@ -8,7 +8,7 @@ class PlainLogin extends React.Component {
 	render(){
 		return (
 			<div className="plainlogin-container">
-				<img src={Splash} className="plainlogin-img" />
+				<img src={Splash} alt="plainlogin" className="plainlogin-img" />
 				<div className="plainlogin-form-container">
 					<div className="plainlogin-form">
 						<LoginForm history={this.props.history} />

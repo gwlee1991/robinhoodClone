@@ -1,4 +1,5 @@
 const axios = require('axios');
+const url = require('url');
 const User = require('../models/User');
 const keys = require('../configs');
 const { finnhubToken } = keys;
@@ -38,16 +39,16 @@ const getStocksData = async (res, stocks) => {
 
 const getWatchlistStocksData = async (req, res) => {
 	const user = req.user;
-	console.log(user);
+	const queryObject = url.parse(req.url, true).query;
 	try {
+		const watchListName = queryObject.watchlistName;
 		const existingUser = await User.findById(user._id);
-		const watchlist = existingUser.watchList;
-		getStocksData(res, watchlist);
+		const watchlist = existingUser.watchLists.filter(watchlist => watchlist.name === watchListName)[0];
+		getStocksData(res, watchlist.stocks);
 	} catch (err) {
 		console.log(err);
 		res.status(400).send(['Unknown error has occurred.']);
 	}
-
 }
 
 
@@ -73,8 +74,25 @@ const getNewsData = async (req, res) => {
 	}
 }
 
+const searchQuery = async (req, res) => {
+	const queryObject = url.parse(req.url, true).query;
+	const ENDPOINT = '/search';
+	try {
+		const response = await axios.get(`${FINNHUB_BASE_URL}${ENDPOINT}?q=${queryObject.searchTerm}&token=${finnhubToken}`);
+		if (response.data.count > 6) {
+			res.send(response.data.result.slice(0, 6));
+		} else {
+			res.send(response.data.result);
+		}
+	} catch (err) {
+		res.status(400).send(['Unknown error has occurred']);
+	}
+
+}
+
 module.exports = {
 	getWatchlistStocksData,
 	getOwnedStocksData,
-	getNewsData
+	getNewsData,
+	searchQuery
 }

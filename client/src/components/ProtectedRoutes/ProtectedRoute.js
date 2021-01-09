@@ -15,7 +15,7 @@ class ProtectedRoute extends React.Component {
 
 const mapStateToProps = () => {
 	let loggedIn = false;
-	document.cookie.split(';').map(item => {
+	document.cookie.split(';').forEach(item => {
 		const [key, value] = item.split('=');
 		if (key === "access_token" && value !== "") loggedIn = true;
 	})
