@@ -18,7 +18,7 @@ const sendToken = (res, user) => {
 		lastName: user.lastName,
 		email: user.email,
 		watchLists: user.watchLists,
-		buyingPower: user.buyingPower,
+		buyingPower: parseFloat(user.buyingPower).toFixed(2),
 		ownedStocks: user.ownedStocks,
 		phoneNumber: user.phoneNumber,
 		address1: user.address1,
@@ -152,11 +152,12 @@ const addBuyingPower = async(req, res) => {
 	try {
 		let user = await User.findById(_id);
 		const { buyingPower } = req.body;
-		if (parseInt(buyingPower) < 0) throw { name: "Invalid Entry", message: ['Please enter a valid amount.']}
-		user.buyingPower += parseInt(buyingPower);
+		if (parseFloat(buyingPower) < 0) throw { name: "Invalid Entry", message: ['Please enter a valid amount.']}
+		user.buyingPower += parseFloat(buyingPower);
 		user = await user.save()
 		sendToken(res, user);
 	} catch(err) {
+		console.log(err);
 		switch (err.name) {
 			case "Invalid Entry":
 				res.status(422).send(err.message);

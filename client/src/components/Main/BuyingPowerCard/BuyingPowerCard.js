@@ -21,7 +21,7 @@ class BuyingPowerCard extends React.Component {
 	renderModal = () => {
 		if (this.state.openModal) {
 			return <Modal>
-				<DepositFundModal handleClick={() => { this.setState({ openModal: false})}} />
+				<DepositFundModal addBuyingPower={this.props.addBuyingPower} handleClick={() => { this.setState({ openModal: false})}} />
 			</Modal>
 		}
 	}
@@ -53,7 +53,6 @@ class BuyingPowerCard extends React.Component {
 	}
 
 	render(){
-		console.log(this.state);
 		return (
 			<div className="buying-power-card">
 				<div onClick={() => this.setState({expand: !this.state.expand})} className={this.state.expand ? "buying-power-card-header expand" : "buying-power-card-header"}>
