@@ -39,11 +39,11 @@ function Header(props) {
                 </div>
                 <SearchBar />
                 <div className="header-menu-items">
-                    <span>Free Stocks</span>
-                    <span>Portfolio</span>
-                    <span>Cash</span>
-                    <span>Message</span>
-                    <span>Account</span>
+                    <Link to="/account/referral"><span className="header-menu-item">Free Stocks</span></Link>
+                    <Link to="/"><span className="header-menu-item">Portfolio</span></Link>
+                    <Link to="/cash"><span className="header-menu-item">Cash</span></Link>
+                    <span className="header-menu-item">Message</span>
+                    <span className="header-menu-item">Account</span>
                 </div>
             </div>
         </div>

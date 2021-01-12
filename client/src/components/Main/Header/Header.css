@@ -44,11 +44,12 @@
   padding-top: 6px;
 }
 
-.header-menu-items > span {
+.header-menu-item {
   font-weight: 700;
   margin-left: 10px;
   margin-right: 30px;
   white-space: nowrap;
+  color: white;
 }
 
 .header-menu-items span:hover {

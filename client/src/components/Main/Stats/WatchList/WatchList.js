@@ -47,7 +47,7 @@ class WatchList extends React.Component {
 						<span className="small-text">{this.props.watchlist.name}</span>
 					</div>
 					<div className="watchlist-buttons">
-						<div className="watchlist-more-button green-hover">
+						<div onClick={e => e.stopPropagation()} className="watchlist-more-button green-hover">
 							<span>...</span>
 						</div>
 						<div className={this.state.show ? "watchlist-expand-button flip" : "watchlist-expand-button"}>
