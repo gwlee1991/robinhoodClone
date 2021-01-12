@@ -86,7 +86,7 @@ class DepositFundModal extends React.Component {
 						</div>
 						{this.renderError()}
 						<div className="submit-button" onClick={this.handleSubmit}>
-							<span>Review</span>
+							<span>Deposit</span>
 						</div>
 					</form>
 				</div>
