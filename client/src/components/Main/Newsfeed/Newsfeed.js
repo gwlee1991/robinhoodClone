@@ -1,11 +1,11 @@
 import React from 'react'
 import './Newsfeed.css';
 
-import LineGraph from './LineGraph/LineGraph';
+import Graph from './Graph/Graph';
 import BuyingPowerCard from '../BuyingPowerCard/BuyingPowerCard';
-import TimeLineBar from './TimeLineBar/TimeLineBar';
 import PopularLists from './PopularLists/PopularLists';
 import News from './News/News';
+
 
 function Newsfeed() {
     return (
@@ -20,12 +20,7 @@ function Newsfeed() {
                             <span className="text light normal">Past Year</span>
                         </div>
                     </section>
-                    <section className="newsfeed-chart">
-                        <LineGraph />
-                    </section>
-                    <section className="newsfeed-timeline-bar">
-                        <TimeLineBar />
-                    </section>
+                    <Graph />
                     <section className="newsfeed-buying-power">
                         <BuyingPowerCard />
                     </section>

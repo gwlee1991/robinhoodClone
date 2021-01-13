@@ -5,7 +5,7 @@ function TimeLineBarOptions(props) {
 	const buttonClassname = props.selected ? "timeline-button selected" : "timeline-button";
 	return (
 			<span className={containerClassname}>
-				<span onClick={props.handleClick} className={buttonClassname}>
+				<span onClick={props.handleTimeline} className={buttonClassname}>
 					{props.term}
 				</span>
 			</span>
