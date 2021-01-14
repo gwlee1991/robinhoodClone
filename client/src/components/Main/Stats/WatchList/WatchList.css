@@ -26,15 +26,132 @@
   font-weight: 700;
   font-size: 20px;
   padding-bottom: 10px;
+  color: white;
+  outline: none;
+}
+
+.watchlist-more-button.clicked {
+  border-bottom: 2px solid #5ac53b;
+  color: #5ac53b;
 }
 
 .watchlist-expand-button {
   margin-left: 20px;
   font-weight: 700;
   padding-top: 4px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .watchlist-container:hover {
   cursor: pointer;
   background-color: #31363a;
+}
+
+.watchlist-menu {
+  position: fixed;
+  background-color: rgb(30, 33, 36);
+  border-radius: 4px;
+  z-index: 101;
+  width: 150px;
+  color: white;
+  box-shadow: 0px 12px 24px rgba(0, 0, 0, 0.6),
+    0px -12px 24px rgba(0, 0, 0, 0.6);
+  min-width: 180px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  padding: 12px;
+}
+
+.watchlist-menu-option {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  margin: 12px 12px 12px 12px;
+  align-items: center;
+}
+
+.watchlist-menu-option > span {
+  padding-left: 20px;
+}
+
+.watchlist-menu-option:hover {
+  cursor: pointer;
+  color: #5ac53b;
+}
+
+.watchlist-modal-container {
+  color: white;
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0.6);
+  z-index: 301;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  padding-top: 140px;
+}
+
+.modal-box {
+  width: 460px;
+  margin: auto;
+  background-color: rgb(30, 33, 36);
+  border-radius: 4px;
+  box-shadow: 0px 1px 6px rgba(0, 0, 0, 0.6);
+  padding: 24px 36px 24px 36px;
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  font-size: 18px;
+  margin-bottom: 24px;
+  flex-direction: row;
+  align-items: center;
+}
+
+.modal-header-title {
+  margin-right: 32px;
+}
+
+.save-button-container {
+  margin: 24px 12px 24px 12px;
+}
+
+.save-button {
+  display: flex;
+  height: 48px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 4px;
+  color: rgb(30, 33, 36);
+  background-color: #5ac53b;
+}
+
+.save-button > span {
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.save-button:hover {
+  cursor: pointer;
+  background-color: rgba(28, 223, 35, 0.4);
+}
+
+.delete-button {
+  display: flex;
+  height: 48px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 4px;
+  background-color: rgb(244, 80, 0);
+  color: rgb(30, 33, 36);
+}
+
+.delete-button:hover {
+  cursor: pointer;
+  background-color: rgba(255, 106, 38, 1);
 }

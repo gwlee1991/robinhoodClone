@@ -1,17 +1,19 @@
 import React, { useEffect } from 'react'
 import './Header.css';
 import Logo from '../../../images/robinhood.svg';
-import {Redirect, Link} from 'react-router-dom';
+import {
+    Link
+} from 'react-router-dom';
 import SearchBar from './Search/SearchBar';
 import { logout } from '../../../actions/session';
 import { connect } from 'react-redux';
 
 function Header(props) {
-    const handleLogout = () => {
-        props.logout().then(() => {
-            <Redirect to={{pathname: "/login"}} />
-        })
-    }
+    // const handleLogout = () => {
+    //     props.logout().then(() => {
+    //         <Redirect to={{pathname: "/login"}} />
+    //     })
+    // }
 
     const setMargin = () => {
         const container = document.querySelector('div.header-container');

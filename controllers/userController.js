@@ -141,7 +141,35 @@ const addWatchList = async (req, res) => {
 }
 
 const deleteWatchList = async (req, res) => {
+	const { _id } = req.user;
+	try {
+		let user = await User.findById(_id);
+		console.log(req.body);
+		const { watchlistName } = req.body;
+		user.watchLists = user.watchLists.filter(watchlist => watchlist.name !== watchlistName);
+		user = await user.save();
+		sendToken(res, user);
+	} catch (err) {
+		res.status(400).send(['Unknown error has occurred']);
+	}
+}
 
+const editWatchList = async (req, res) => {
+	const { _id } = req.user;
+	try {
+		let user = await User.findById(_id);
+		const { watchlistName, newWatchlistName } = req.body;
+		user.watchLists = user.watchLists.map(watchlist => {
+			if (watchlist.name === watchlistName) {
+				watchlist.name = newWatchlistName;
+			}
+			return watchlist;
+		});
+		user = await user.save();
+		sendToken(res, user);
+	} catch (err) {
+		res.status(400).send(['Unknown error has occurred']);
+	}
 }
 
 const addStockToWatchList = () => {}
@@ -168,5 +196,5 @@ const addBuyingPower = async(req, res) => {
 }
 
 module.exports = {
-	signUp, logIn, getCurrentUser, demoLogin, addWatchList, addBuyingPower
+	signUp, logIn, getCurrentUser, demoLogin, addWatchList, addBuyingPower, deleteWatchList, editWatchList
 }

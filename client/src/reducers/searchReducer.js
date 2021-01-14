@@ -10,7 +10,7 @@ const defaultSearchResults = {
 	error: []
 };
 
-export default (state = defaultSearchResults, action) => {
+const searchReducer = (state = defaultSearchResults, action) => {
 	Object.freeze(state);
 	switch(action.type) {
 		case RECEIVE_SEARCH_RESULTS:
@@ -25,3 +25,5 @@ export default (state = defaultSearchResults, action) => {
 			return state;
 	}
 }
+
+export default searchReducer;

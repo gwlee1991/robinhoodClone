@@ -16,6 +16,8 @@
   --neutral-bg2: rgb(245, 248, 250);
   --neutral-bg1: rgb(30, 33, 36);
   --error-text-color: rgb(255, 80, 0);
+  --watchlist-top: 600px;
+  --watchlist-left: 1200px;
 }
 
 #root {
@@ -111,6 +113,14 @@ body {
   margin: 0px;
 }
 
+.small-bold-text {
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 20px;
+  letter-spacing: -0.1px;
+  margin: 0px;
+}
+
 .medium-title-text {
   font-size: 15px;
   font-weight: 700;
@@ -145,4 +155,8 @@ ul {
 
 .flip {
   transform: rotate(180deg);
+}
+
+.hover:hover {
+  cursor: pointer;
 }

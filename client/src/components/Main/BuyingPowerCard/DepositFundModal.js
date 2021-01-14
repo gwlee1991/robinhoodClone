@@ -46,7 +46,7 @@ class DepositFundModal extends React.Component {
 	handleSubmit = e => {
 		e.preventDefault();
 		try {	
-			if (!this.buyingPowerValidation()) throw {message: 'Please enter a correct dollar amount.'}
+			if (!this.buyingPowerValidation()) throw new Error('Please enter a correct dollar amount.');
 			this.props.addBuyingPower(this.state.buyingPower.slice(1));
 			this.props.handleClick();
 		} catch (err) {
