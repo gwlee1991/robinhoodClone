@@ -15,6 +15,11 @@ export const getNewsData = async () => {
 	return res.data;
 }
 
+export const getStockData = async (ticker) => {
+	const res = await axios.get(`/api/v1/data/stock?ticker=${ticker}`);
+	return res.data;
+}
+
 export const querySearch = async (searchTerm) => {
 	const res = await axios.get(`/api/v1/data/search?searchTerm=${searchTerm}`);
 	return res.data;

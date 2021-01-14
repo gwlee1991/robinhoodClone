@@ -3,6 +3,8 @@ import { connect } from 'react-redux';
 import LineGraph from './LineGraph/LineGraph';
 import TimeLineBar from './TimeLineBar/TimeLineBar';
 
+const timelineOptions = ['1D', '1W', '1M', '3M', '1Y', 'ALL'];
+
 class Graph extends React.Component {
 	constructor(props) {
 		super(props);
@@ -53,7 +55,7 @@ class Graph extends React.Component {
 					<LineGraph timeline={this.state.timeline} />
 				</div>
 				<div className="newsfeed-timeline-bar">
-					<TimeLineBar handleTimeline={this.handleTimeline} select={this.state.timeline} />
+					<TimeLineBar timelineOptions={timelineOptions} handleTimeline={this.handleTimeline} select={this.state.timeline} />
 				</div>
 			</>
 		)

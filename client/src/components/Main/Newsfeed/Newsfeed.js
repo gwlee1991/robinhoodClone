@@ -9,7 +9,7 @@ import News from './News/News';
 
 function Newsfeed() {
     return (
-        <div className="newsfeed">
+        <div className="main-left">
             <div className="newsfeed-container">
                 <div className='newsfeed-chart-section'>
                     <section>

@@ -3,6 +3,7 @@ import { Route } from 'react-router-dom';
 import Header from './Header/Header';
 import Newsfeed from './Newsfeed/Newsfeed';
 import Stats from './Stats/Stats';
+import StockInfo from './StockInfo/StockInfo';
 
 function Main() {
 	return (
@@ -12,8 +13,9 @@ function Main() {
 			</div>
 			<div className="app-body">
 				<div className="app-container">
-					<Newsfeed />
-					<Stats />
+					<Route path="/" exact component={Newsfeed} />
+					<Route path="/" exact component={Stats} />
+					<Route path="/stock/:stock" component={StockInfo} />
 				</div>
 			</div>
 		</div>

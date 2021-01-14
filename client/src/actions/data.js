@@ -34,4 +34,4 @@ export const fetchSearchResults = searchTerm => async dispatch => {
 	} catch (err) {
 		dispatch(receiveSearchError(err));
 	}
-} 
+}
