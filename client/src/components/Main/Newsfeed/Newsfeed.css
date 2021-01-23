@@ -3,7 +3,7 @@
   color: white;
 }
 
-.newsfeed-portfolio {
+.portfolio {
   text-align: left;
   font-weight: 700;
   margin-bottom: 12px;
@@ -11,12 +11,12 @@
   margin-bottom: 12px;
 }
 
-.newsfeed-portfolio h1 {
+.portfolio h1 {
   margin: 0;
   font-size: 32px;
 }
 
-.newsfeed-portfolio span {
+.portfolio span {
   margin-top: 10px;
   padding-right: 2px;
 }

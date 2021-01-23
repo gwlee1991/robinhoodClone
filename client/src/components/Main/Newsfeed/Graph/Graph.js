@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import LineGraph from './LineGraph/LineGraph';
 import TimeLineBar from './TimeLineBar/TimeLineBar';
+import Summary from './Summary/Summary';
 
 const timelineOptions = ['1D', '1W', '1M', '3M', '1Y', 'ALL'];
 
@@ -21,35 +22,11 @@ class Graph extends React.Component {
 		})
 	}
 
-	renderTimelineState = () => {
-		switch(this.state.timeline) {
-			case '1D':
-				return 'Today';
-			case '1W':
-				return 'Past Week';
-			case '1M':
-				return 'Past Month';
-			case '3M': 
-				return 'Past 3 Months';
-			case '1Y':
-				return 'Past Year';
-			case 'ALL':
-				return 'All Time';
-			default:
-				return '';
-		}
-	}
-
 	render(){
 		return (
 			<>
-				<section className="newsfeed-portfolio">
-					<h1>${this.props.currentUser.buyingPower}</h1>
-					<div className="newsfeed-portfolio-status">
-						<span className="dollar-gain">+$44.63</span>
-						<span className="percentage-gain">(+0.4%)</span>
-						<span className="text light normal">{this.renderTimelineState()}</span>
-					</div>
+				<section className="portfolio">
+					<Summary price={this.props.currentUser.buyingPower} timeline={this.state.timeline} />
 				</section>
 				<div className="newsfeed-chart">
 					<LineGraph timeline={this.state.timeline} />
