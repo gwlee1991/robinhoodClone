@@ -21,8 +21,11 @@ const Summary = props => {
 	}
 
 	const renderPrice = () => {
-		if (props.price.toString().split('.').length < 2) {
-			return `$${props.price}.00`;
+		const [dollar, cent] = props.price.toString().split(".");
+		if (cent.length < 2) {
+			return `$${dollar}.00`;
+		} else if (cent.length > 2) {
+			return `$${dollar}.${cent.slice(0, 2)}`;
 		}
 		return `$${props.price}`
 	}

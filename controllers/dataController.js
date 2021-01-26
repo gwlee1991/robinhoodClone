@@ -98,6 +98,16 @@ const earningSurprises = async ticker => {
 	}
 };
 
+const fetchCompanyProfile = async ticker => {
+	const ENDPOINT = `/stock/profile2?symbol=${ticker}&token=${finnhubToken}`;
+	try {
+		const response = await axios.get(`${FINNHUB_BASE_URL}${ENDPOINT}`);
+		return response.data;
+	} catch (err) {
+		throw { message: ['Unknown error has occurred']};
+	}
+}
+
 // controllers
 
 const getStockData = async (req, res) => {
@@ -107,7 +117,7 @@ const getStockData = async (req, res) => {
 		const quote = new Promise(async (resolve, reject) => {
 			try {
 				const res = await fetchStockData(ticker);
-				resolve(res.data);
+				resolve(res);
 			} catch (err) {
 				reject(err);
 			}
@@ -158,10 +168,20 @@ const getStockData = async (req, res) => {
 			}
 		})
 
-		Promise.all([quote, news, peers, analystRecommendation, finance, earnings]).then((values) => {
-			res.send({
+		const profile = new Promise(async(resolve,reject) => {
+			try {
+				const profileData = await fetchCompanyProfile(ticker);
+				resolve(profileData);
+			} catch (err) {
+				reject(err);
+			}
+		})
+
+		Promise.all([quote, news, peers, analystRecommendation, finance, earnings, profile]).then((values) => {
+			const responseBody = {
 				name: ticker,
 				info: {
+					profile: values[6],
 					quote: values[0],
 					peers: values[2],
 					recommendation: values[3],
@@ -169,9 +189,11 @@ const getStockData = async (req, res) => {
 					earnings: values[5]
 				},
 				news: values[1]
-			});
+			}
+			res.send(responseBody);
 		})
 	} catch (err) {
+		console.log(err);
 		res.status(400).send(['Unknown error has occurred']);
 	}
 }

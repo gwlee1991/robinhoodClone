@@ -12,11 +12,12 @@ class LineGraph extends React.Component {
 
   createMockData = () => {
     const timelineMapper = {
-      '1D': 1,
-      '1W': 7,
+      '1D': 13,
+      '1W': 14,
       '1M': 30,
       '3M': 90,
       '1Y': 365,
+      '5Y': 365 * 5,
       'ALL': 365
     }
     let data = [];
@@ -56,6 +57,7 @@ class LineGraph extends React.Component {
                 backgroundColor: "black",
                 borderColor: "#5AC53B",
                 borderWidth: 2,
+                lineTension: 0,
                 pointBorderColor: 'rgba(0, 0, 0, 0)',
                 pointBackgroundColor: 'rgba(0, 0, 0, 0)',
                 pointHoverBackgroundColor: '#5ac53b',
@@ -67,7 +69,7 @@ class LineGraph extends React.Component {
           }}
           options={{
             animation: {
-              duration: 300
+              duration: 0
             },
             legend: {
               display: false
@@ -89,11 +91,11 @@ class LineGraph extends React.Component {
                 {
                   type: "time",
                   time: {
-                  format: "MM/DD/YY",
-                  tooltipFormat: 'l',
-                },
-                ticks: {
-                display: false
+                    format: "MM/DD/YY",
+                    tooltipFormat: 'l',
+                  },
+                  ticks: {
+                  display: false
                 }
               }]
             }

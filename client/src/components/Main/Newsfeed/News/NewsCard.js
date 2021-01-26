@@ -1,7 +1,8 @@
 import React from 'react';
+import showElapsedTime from '../../../../lib/showElapsedTime';
 
 function NewsCard(props) {
-	const { source, image, summary, headline, id, url } = props.news;
+	const { source, image, datetime, summary, headline, id, url } = props.news;
 	const thumbnailClassname = props.top ? "news-item-thumbnail big" : "news-item-thumbnail small";
 	const renderSummary = () => {
 		if (props.top) {
@@ -9,12 +10,6 @@ function NewsCard(props) {
 				{summary}
 			</div>
 		}
-	}
-
-	const showElapsedTime = () => {
-		// const now = Date.nsow();
-		// const elapsedMilliseconds = now - datetime;
-		return "1h";
 	}
 
 	const handleClick = (e) => {
@@ -26,7 +21,7 @@ function NewsCard(props) {
 		<div className="news-item" onClick={handleClick}>
 			<div className="news-item-header">
 				<span className="news-item-header-source">{source}</span>
-				<span className="news-item-header-time">{showElapsedTime()}</span>
+				<span className="news-item-header-time">{showElapsedTime(datetime)}</span>
 			</div>
 			<div className="news-item-body">
 				<div className="news-item-content">

@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { fetchStockInfo } from '../../../actions/stock';
+import LoadScreen from '../../LoadScreen/LoadScreen'
 import Summary from '../Newsfeed/Graph/Summary/Summary';
 import LineGraph from '../Newsfeed/Graph/LineGraph/LineGraph';
 import TimeLineBar from '../Newsfeed/Graph/TimeLineBar/TimeLineBar';
@@ -15,7 +16,8 @@ class StockInfo extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			timeline: '1Y'
+			timeline: '1Y',
+			load: 'none'
 		}
 	}
 
@@ -28,7 +30,9 @@ class StockInfo extends React.Component {
 	}
 
 	componentDidMount = () => {
-		this.props.fetchStockInfo(this.props.stock);
+		this.props.fetchStockInfo(this.props.stock).then(() => {
+			this.setState({load: 'done'});
+		})
 	}
 
 	renderSummary = () => {
@@ -44,32 +48,37 @@ class StockInfo extends React.Component {
 	}
 	
 	render(){
-		return (
-			<div className="main-left">
-				{this.renderStockName()}
-				<section className="portfolio">
-					{this.renderSummary()}
-				</section>
-				<section className="stockinfo-chart">
-					<LineGraph timeline={this.state.timeline} />
-				</section>
-				<section>
-					<TimeLineBar timelineOptions={timelineOptions} handleTimeline={this.handleTimeline} select={this.state.timeline} />
-				</section>
-				<section>
-					About section
-				</section>
-				<section>
-					<News name={this.props.stock} news={this.props.stockInfo.name? this.props.stockInfo.news : [] } /> 
-				</section>
-				<section>
-					<AnalystRating rating={this.props.stockInfo.name ? this.props.stockInfo.info.recommendation[0] : {}} />
-				</section>
-				{/* <section>
-					<Earnings earning={this.props.stockInfo.name ? this.props.stockInfo.info.earnings : null } />
-				</section> */}
-			</div>
-		)
+		switch(this.state.load) {
+			case 'none':
+				return <LoadScreen />
+			case 'done':
+				return (
+					<div className="main-left">
+						{this.renderStockName()}
+						<section className="portfolio">
+							{this.renderSummary()}
+						</section>
+						<section className="stockinfo-chart">
+							<LineGraph timeline={this.state.timeline} />
+						</section>
+						<section>
+							<TimeLineBar timelineOptions={timelineOptions} handleTimeline={this.handleTimeline} select={this.state.timeline} />
+						</section>
+						<section>
+							About section
+						</section>
+						<section>
+							<News name={this.props.stock} news={this.props.stockInfo.name? this.props.stockInfo.news : [] } /> 
+						</section>
+						<section>
+							<AnalystRating rating={this.props.stockInfo.name ? this.props.stockInfo.info.recommendation[0] : {}} />
+						</section>
+						{/* <section>
+							<Earnings earning={this.props.stockInfo.name ? this.props.stockInfo.info.earnings : null } />
+						</section> */}
+					</div>
+				)
+		}
 	}
 }
 

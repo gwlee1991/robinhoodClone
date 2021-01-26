@@ -1,4 +1,5 @@
 import React from 'react';
+import NewsCard from './NewsCard';
 import { Link } from 'react-router-dom';
 
 const News = ({ name, news }) => {
@@ -16,6 +17,11 @@ const News = ({ name, news }) => {
 					</div>
 				</div>
 			</header>
+			<div>
+				{news.slice(0, 3).map((newsItem) => {
+					return <NewsCard key={newsItem.id} news={newsItem} />
+				})}
+			</div>
 		</section>
 	)
 }

@@ -1,18 +1,16 @@
 import React from 'react'
-import Logo from '../../images/robinhood-green.png';
-
-const style = {
-	width: "100%",
-	height: "100%",
-	display: "flex",
-	justifyContent: "center",
-	alignItems: "center"
-}
+import Loader from 'react-loader-spinner'
+import "./LoadScreen.css";
 
 function LoadScreen() {
 	return (
-		<div style={style}>
-			<img src={Logo} alt="logo" width="100px" />
+		<div className="loadscreen">
+			<Loader 
+				type="Rings"
+				color="rgb(0,200,5)"
+				height={100}
+				width={100}
+			/>
 		</div>
 	)
 }
