@@ -36,3 +36,21 @@ export const addBuyingPower = buyingPower => async dispatch => {
 		receiveSessionError(err);
 	}
 }
+
+export const addStockToWatchList = (payload) => async dispatch => {
+	try {
+		dispatch(receiveCurrentUser(await portfolioApi.addStockToWatchList(payload)));
+		dispatch(clearSessionError());
+	} catch (err) {
+		receiveSessionError(err);
+	}
+}
+
+export const removeStockFromWatchList = payload => async dispatch => {
+	try {
+		dispatch(receiveCurrentUser(await portfolioApi.removeStockFromWatchList(payload)));
+		dispatch(clearSessionError());
+	} catch (err) {
+		receiveSessionError(err);
+	}
+}

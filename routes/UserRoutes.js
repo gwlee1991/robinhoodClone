@@ -12,9 +12,8 @@ module.exports = app => {
 	app.post('/api/v1/watchlist/edit', auth, userController.editWatchList);
 	
 	app.post('/api/v1/buyingpower/add', auth, userController.addBuyingPower);
-	// deposit money
 	// withdraw money
 	// edit profile
-	// add to watchlist
-	// remove from watchlist
+	app.post('/api/v1/watchlist/stock/add', auth, userController.addStockToWatchList);
+	app.post('/api/v1/watchlist/stock/delete', auth, userController.removeStockFromWatchList);
 }

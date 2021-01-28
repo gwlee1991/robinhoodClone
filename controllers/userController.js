@@ -172,8 +172,51 @@ const editWatchList = async (req, res) => {
 	}
 }
 
-const addStockToWatchList = () => {}
-const removeStockToWatchList = () => {}
+const addStockToWatchList = async (req, res) => {
+	const { _id } = req.user;
+	try {
+		let user = await User.findById(_id);
+		const { stock, watchListName } = req.body;
+		user.watchLists = user.watchLists.map(watchlist => {
+			if (watchlist.name === watchListName) {
+				if (watchlist.stocks.includes(stock)) throw { name: 'Invalid Entry', message: 'Stock already exists in watch lsit' };
+				watchlist.stocks.push(stock);
+			}
+			return watchlist;
+		});
+		user = await user.save();
+		sendToken(res, user);
+	} catch (err) {
+		if (err.name === 'Invalid Entry' ) {
+			res.status(422).send([err.message]);
+		} else {
+			res.status(400).send(['Unknown error has occurred']);
+		}
+	}
+}
+const removeStockFromWatchList = async (req, res) => {
+	const { _id } = req.user;
+	try {
+		let user = await User.findById(_id);
+		const { stock, watchListName } = req.body;
+		user.watchLists = user.watchLists.map(watchlist => {
+			if (watchlist.name === watchListName) {
+				if (!watchlist.stocks.includes(stock)) throw { name: 'Invalid Entry', message: 'Stock doesn\'t exist in the watch list'};
+				return { ...watchlist, stocks: watchlist.stocks.filter(watchlistStock => watchlistStock !== stock)};
+			} else {
+				return watchlist;
+			}
+		});
+		user = await user.save();
+		sendToken(res, user);
+	} catch (err) {
+		if (err.name === 'Invalid Entry') {
+			res.status(422).send([err.message]);
+		} else {
+			res.status(400).send(['Unknown error has occurred']);
+		}
+	}
+};
 
 const addBuyingPower = async(req, res) => {
 	const { _id } = req.user;
@@ -196,5 +239,5 @@ const addBuyingPower = async(req, res) => {
 }
 
 module.exports = {
-	signUp, logIn, getCurrentUser, demoLogin, addWatchList, addBuyingPower, deleteWatchList, editWatchList
+	signUp, logIn, getCurrentUser, demoLogin, addWatchList, addBuyingPower, deleteWatchList, editWatchList, addStockToWatchList, removeStockFromWatchList
 }

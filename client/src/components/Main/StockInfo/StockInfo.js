@@ -76,6 +76,15 @@ class StockInfo extends React.Component {
 						{/* <section>
 							<Earnings earning={this.props.stockInfo.name ? this.props.stockInfo.info.earnings : null } />
 						</section> */}
+						<section>
+							History section
+						</section>
+						<section>
+							Peer section
+						</section>
+						<section>
+							Disclosure section
+						</section>
 					</div>
 				)
 		}

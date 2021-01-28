@@ -30,7 +30,7 @@ class SearchBar extends React.Component {
 		return this.props.searchResults.map((result, i) => {
 			const { symbol, description} = result;
 			return (
-				<Link to={`/stocks/${symbol}`} style={{ textDecoration: 'none'}}>
+				<Link to={`/stock/${symbol}`} style={{ textDecoration: 'none'}}>
 					<div className="header-search-result-items" key={description + i}>
 						<span className="header-search-header-text search-symbol">{symbol}</span>
 						<span className="header-search-header-text search description">{description}</span>

@@ -1,0 +1,201 @@
+.purchase-card-watchlist-button-container {
+	margin: 48px 24px 0px 24px;
+	border: 1px solid rgb(0, 200, 5);
+	padding-left: 48px;
+	padding-right: 48px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	border-radius: 4px;
+	color: rgb(0, 200, 5);
+	height: 48px;
+	min-width: 120px;
+	max-width: 360px;
+}
+
+.purchase-card-watchlist-button-container:hover {
+	background-color: rgba(0, 200, 5, 0.4);
+	cursor: pointer;
+}
+
+.watchlist-modal-form {
+	margin: auto;
+	margin-top: 36px;
+	width: 408px;
+	background-color: black;
+	color: white;
+	border-radius: 4px;
+	box-shadow: 0px 1px 6px rgba(0, 0, 0, 0.6);
+	padding: 12px 0;
+	max-width: 100%;
+}
+
+.watchlist-modal-row {
+	display: flex;
+	flex-direction: row;
+	padding-left: 36px;
+	justify-content: flex-start;
+	align-items: center;
+	margin-bottom: 12px;
+	overflow: hidden;
+	will-change: height;
+}
+
+.watchlist-modal-row.hidden {
+	height: 0px;
+	will-change: height;
+}
+
+.watchlist-modal-row:hover {
+	background-color: rgb(14, 15, 14);
+}
+
+.watchlist-form-plus {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 64px;
+	width: 48px;
+	background-color: rgba(0, 200, 5, 0.2);
+	border-radius: 4px;
+	color: rgb(0, 200, 5);
+	margin-right: 12px;
+}
+
+.watchlist-form-image {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 64px;
+	width: 48px;
+	background-color: rgb(30, 33, 36);
+	border-radius: 4px;
+	margin-right: 12px;
+}
+
+.watchlist-body-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.watchlist-summary-text {
+	color: rgb(121, 133, 139);
+	font-size: 13px;
+	font-weight: 400;
+	line-height: 20px;
+	letter-spacing: -0.1px;
+}
+
+.watchlist-form {
+	display: flex;
+	flex-direction: row;
+	padding-left: 36px;
+	justify-content: flex-start;
+	align-items: center;
+	margin-bottom: 12px;
+	overflow: hidden;
+	will-change: height;
+}
+
+.watchlist-form.hidden {
+	height: 0px;
+	will-change: height;
+}
+
+.watchlist-modal-form-container {
+	margin-left: 36px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+	width: 100%;
+	align-items: flex-end;
+}
+
+.modal-input-container {
+	box-shadow: none;
+	border-radius: 4px;
+	height: 48px;
+	margin: 10px;
+	border: 1px solid rgb(48, 54, 58);
+	width: 100%;
+}
+
+.modal-input-container > input {
+	height: 100%;
+	width: 100%;
+	background-color: rgb(48, 54, 58);
+	border-radius: 4px;
+	padding-left: 12px;
+	border: 1px solid rgb(48, 54, 58);
+	color: white;
+}
+
+.modal-input-container > input:focus {
+	outline: none;
+}
+
+.modal-input-container.focused {
+	border: 1px solid #5ac53b;
+}
+
+.transaction-form-header-container {
+	height: 52px;
+	padding-left: 24px;
+	padding-right: 24px;
+	border-bottom: 1px solid rgb(64, 73, 78);
+	padding-top: 4px;
+	display: flex;
+	justify-content: flex-start;
+	align-items: center;
+}
+
+.transaction-form-body {
+	padding: 24px 24px 36px 24px;
+}
+
+.transaction-card-container {
+	background-color: rgb(30, 33, 36);
+	border-radius: 4px;
+	border: 1px solid rgb(64, 73, 78);
+	width: 100%;
+}
+
+.confirmation-button {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background-color: rgb(0, 200, 5);
+	cursor: pointer;
+	height: 48px;
+	border-radius: 4px;
+	min-width: 120px;
+	max-width: 360px;
+	color: rgb(30, 33, 36);
+}
+
+.transaction-footer {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	color: rgb(0, 200, 5);
+	min-height: 48px;
+	border-top: 1px solid rgb(64, 73, 78);
+}
+
+.labels-container {
+	padding-bottom: 4px;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+	min-height: 48px;
+}
+
+.estimate-container {
+	padding-top: 12px;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+	border-top: 1px solid rgb(64, 73, 78);
+}

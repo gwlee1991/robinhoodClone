@@ -25,7 +25,10 @@ class Stats extends React.Component {
           </div>
           <div className="buttons-container">
             <div className="cancel-button small-text" onClick={e => this.setState({ showForm: false, watchListName: ''})}>Cancel</div>
-            <div className="create-list-button small-text" onClick={() => this.props.addWatchList(this.state.watchListName)}>Create List</div>
+            <div className="create-list-button small-text" onClick={() => {
+                this.props.addWatchList(this.state.watchListName);
+                this.setState({ showForm: false, watchListName: ''})
+              }}>Create List</div>
           </div>
         </div>
       )
