@@ -68,9 +68,9 @@ class StockInfo extends React.Component {
 				<section>
 					Peer section
 				</section>
-				<section>
-					Disclosure section
-				</section>
+				<footer style={{ marginTop: "32px"}}>
+					<p className="small-text" style={{ color: "rgb(121,133,139"}}>All investments involve risks, including the loss of principal. Securities trading offered through Robinhood Financial LLC, a registered broker-dealer and Member SIPC.</p>
+				</footer>
 			</div>
 		)
 	}

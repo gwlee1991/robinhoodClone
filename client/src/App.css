@@ -139,6 +139,10 @@ body {
   margin: 0px;
 }
 
+h1 {
+  font-weight: 500;
+}
+
 .large-bold-text {
   font-size: 18px;
   font-weight: 700;
@@ -196,4 +200,8 @@ input {
 
 input:focus {
   outline: none;
+}
+
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
 }

@@ -96,15 +96,17 @@ class PurchaseCard extends React.Component {
 	render() {
 		return (
 			<div className="main-right">
-				<div className="transaction-card-container">
-					<TransactionForm stockInfo={this.props.stockInfo} stock={this.props.stock} currentUser={this.props.currentUser} />
-				</div>
-				<div className="purchase-card-watchlist-button-container">
-					<div onClick={() => this.setState({ showWatchListModal: true })} className="purchase-card-watchlist-button">
-						<span className="small-bold-text">Add to Lists</span>
+				<div className="right-container">
+					<div className="transaction-card-container">
+						<TransactionForm stockInfo={this.props.stockInfo} stock={this.props.stock} currentUser={this.props.currentUser} />
 					</div>
+					<div className="purchase-card-watchlist-button-container">
+						<div onClick={() => this.setState({ showWatchListModal: true })} className="purchase-card-watchlist-button">
+							<span className="small-bold-text">Add to Lists</span>
+						</div>
+					</div>
+					{this.renderWatchListModal()}
 				</div>
-				{this.renderWatchListModal()}
 			</div>
 		)
 	}

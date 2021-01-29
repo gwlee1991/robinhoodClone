@@ -1,3 +1,7 @@
+.right-container {
+	position: fixed;
+}
+
 .purchase-card-watchlist-button-container {
 	margin: 48px 24px 0px 24px;
 	border: 1px solid rgb(0, 200, 5);
@@ -9,8 +13,7 @@
 	border-radius: 4px;
 	color: rgb(0, 200, 5);
 	height: 48px;
-	min-width: 120px;
-	max-width: 360px;
+	width: 238px;
 }
 
 .purchase-card-watchlist-button-container:hover {
@@ -150,14 +153,14 @@
 }
 
 .transaction-form-body {
-	padding: 24px 24px 36px 24px;
+	padding: 24px 24px 20px 24px;
 }
 
 .transaction-card-container {
 	background-color: rgb(30, 33, 36);
 	border-radius: 4px;
 	border: 1px solid rgb(64, 73, 78);
-	width: 100%;
+	width: 280px;
 }
 
 .confirmation-button {
@@ -204,8 +207,14 @@
 	width: 138px;
 	display: flex;
 	flex-direction: column;
-	justify-content: center;
-	align-items: center;
+	justify-content: flex-start;
+	position: absolute;
+	top: 82px;
+	left: 117px;
+}
+
+.invest-type-option-container:focus {
+	outline: none;
 }
 
 .option-box {
@@ -213,12 +222,21 @@
 	background-color: rgb(30, 33, 36);
 	height: 36px;
 	padding: 1px 1px 0 12px;
-	width: 100%;
+	width: 138px;
 	position: relative;
 	cursor: pointer;
 	display: flex;
 	align-items: center;
 	border-radius: 4px;
+}
+
+.option-box.selected {
+	background-color: rgb(0, 200, 5);
+	color: rgb(30, 33, 36);
+}
+
+.option-box.hoverable:hover {
+	background-color: rgb(64, 73, 78);
 }
 
 .input-box {
@@ -246,4 +264,47 @@
 .input-box.focused {
 	border: 1px solid rgb(0, 200, 5);
 	background-color: rgb(30, 33, 36);
+}
+
+.purchase-error-container {
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+	align-items: flex-start;
+}
+
+.deposit-funds-button {
+	width: 100%;
+	border: 1px solid rgb(255,80,0);
+	background-color: rgb(255,80,0);
+	border-radius: 4px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 48px;
+	margin-top: 24px;
+	color: rgb(30, 33, 36);
+	cursor: pointer;
+}
+
+.deposit-funds-button:hover {
+	background-color: rgba(255,106,38, 1);
+}
+
+.dismiss-button {
+	width: 100%;
+	border: 1px solid rgb(255,80,0);
+	color: rgb(255,80,0);
+	border-radius: 4px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 48px;
+	margin-top: 12px;
+	cursor: pointer;
+}
+
+
+.dismiss-button:hover {
+	background-color: rgba(255,80,0, 0.2);
 }
