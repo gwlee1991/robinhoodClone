@@ -2,15 +2,20 @@ import React from 'react';
 import { connect } from 'react-redux';
 import Modal from '../../Modal';
 
+const acceptableInput = [
+	'1', '2', '3', '4', '5', '6', '7', '8', '9', '0', '.'
+]
+
 class TransactionForm extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
 			investType: 'dollar',
 			shares: 0,
-			dollar: 0,
+			dollar: "",
 			buy: true,
-			showInvestOption: false
+			showInvestOption: false,
+			inputFocused: false
 		};
 	}
 
@@ -44,13 +49,20 @@ class TransactionForm extends React.Component {
 		const renderOptions = () => {
 			if (this.state.showInvestOption) {
 				return (
-					<div>options</div>
+					<>
+						<div className="option-box">
+							<span className="small-text">Shares</span>
+						</div>
+						<div className="option-box">
+							<span className="small-text">Dollars</span>
+						</div>
+					</>
 				)
 			}
 		}
 		return (
-			<div>
-				<div onClick={() => this.setState({ showInvestOption: !this.state.showInvestOption })}>
+			<div className="invest-type-option-container">
+				<div className="option-box" onClick={() => this.setState({ showInvestOption: !this.state.showInvestOption })}>
 					<span className="small-text">
 						{this.state.investType === 'dollar' ? 'Dollars' : 'Shares'}
 					</span>
@@ -60,9 +72,55 @@ class TransactionForm extends React.Component {
 		);
 	};
 
+	handleDollarInputChange = e => {
+		this.setState(prevState => {
+			console.log(e.target.value);
+			if (e.target.value === '$') {
+				return {
+					dollar: ''
+				}
+			} else if (!acceptableInput.includes(e.target.value[e.target.value.length - 1])) {
+				return {
+					dollar: this.state.dollar
+				}
+			} else if (this.state.dollar.length > 0) {
+				return {
+					dollar: e.target.value
+				}
+			} else {
+				return {
+					dollar:  `$${e.target.value}`
+				}
+			}
+		});
+	}
+
+	buyingPowerValidation = () => {
+		const { buyingPower } = this.state
+		let afterDot = 0;
+		let seenDot = false;
+		for (let i = 1; i < buyingPower.length; i++) {
+			let char = buyingPower[i];
+			if (!acceptableInput.includes(char)) return false;
+			if (seenDot) afterDot++;
+			if (afterDot > 2) return false;
+			if (seenDot && char === '.') return false;
+			if (char === '.') seenDot = true;
+		}
+		return true;
+	}
+	
+	normalizeDollarInput = () => {
+		this.setState({ inputFocused: false });
+	}
+
 	renderDollarForm = () => {
 		const calculateQuantity = () => {
-			return this.state.dollar / this.props.stockInfo.quote.c;
+			if (this.state.dollar === "" || this.state.dollar === '$') return 0;
+			let quantity = parseFloat(this.state.dollar.slice(1)) / this.props.stockInfo.quote.c;
+			let quantityString = quantity.toString();
+			if (quantityString.split('.')[1] && quantityString.split('.')[1].length > 6) return quantity.toFixed(6);
+			return quantity;
 		};
 
 		return (
@@ -71,8 +129,8 @@ class TransactionForm extends React.Component {
 					<div>
 						<span className="small-text">Amount</span>
 					</div>
-					<div>
-						<input />
+					<div className={this.state.inputFocused ? "input-box focused" : "input-box"}>
+						<input onFocus={() => this.setState({ inputFocused: true })} onBlur={this.normalizeDollarInput} value={this.state.dollar} onChange={this.handleDollarInputChange}className="" placeholder="$0.00" />
 					</div>
 				</div>
 				<div className="estimate-container">
@@ -182,6 +240,10 @@ const mapStateToProps = (state) => {
 	};
 };
 
-const mapDispatchToProps = (dispatch) => {};
+const mapDispatchToProps = (dispatch) => {
+	return {
+
+	}
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(TransactionForm);

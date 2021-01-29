@@ -1,7 +1,7 @@
 import React from 'react';
 import Modal from '../../Modal';
+import { connect } from 'react-redux';
 import TransactionForm from './TransactionForm';
-import {connect} from 'react-redux';
 import { addStockToWatchList, removeStockFromWatchList, addWatchList } from '../../../actions/portfolio';
 import Github from '../../../images/GitHub-Mark-Light-32px.png';
 import "./PurchaseCard.css";
@@ -93,15 +93,11 @@ class PurchaseCard extends React.Component {
 		}
 	}
 	
-	renderPurchaseCard = () => {
-
-	}
-	
 	render() {
 		return (
 			<div className="main-right">
 				<div className="transaction-card-container">
-					<TransactionForm stock={this.props.stock} currentUser={this.props.currentUser} />
+					<TransactionForm stockInfo={this.props.stockInfo} stock={this.props.stock} currentUser={this.props.currentUser} />
 				</div>
 				<div className="purchase-card-watchlist-button-container">
 					<div onClick={() => this.setState({ showWatchListModal: true })} className="purchase-card-watchlist-button">
@@ -114,13 +110,6 @@ class PurchaseCard extends React.Component {
 	}
 }
 
-const mapStateToProps = (state, props) => {
-	return {
-		currentUser: state.currentUser.info,
-		stock: props.match.params.stock
-	}
-}
-
 const mapDispatchToProps = dispatch => {
 	return {
 		addStockToWatchList: payload => dispatch(addStockToWatchList(payload)),
@@ -129,4 +118,4 @@ const mapDispatchToProps = dispatch => {
 	}
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(PurchaseCard);
+export default connect(null, mapDispatchToProps)(PurchaseCard);

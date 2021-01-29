@@ -1,8 +1,10 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import "./StatsRow.css";
 import StockChart from '../../../../images/stock.svg';
 import NegStockChart from '../../../../images/negStock.svg';
+import { fetchStockInfo } from '../../../../actions/stock';
 
 function StatsRow(props) {
     const percentage = ((props.price - props.openPrice) / props.openPrice) * 100;
@@ -14,7 +16,7 @@ function StatsRow(props) {
     }
     
     return (
-        <Link to={`/stock/${props.name}`} style={{ textDecoration: 'none' }}>
+        <Link onClick={() => props.fetchStockInfo(props.name)} to={`/stock/${props.name}`} style={{ textDecoration: 'none' }}>
             <div className="statsrow">
                 <div className="statsrow-intro">
                     <h1>{props.name}</h1>
@@ -35,4 +37,10 @@ function StatsRow(props) {
     )
 }
 
-export default StatsRow
+const mapDispatchToProps = dispatch => {
+    return {
+        fetchStockInfo: ticker => dispatch(fetchStockInfo(ticker))
+    }
+}
+
+export default connect(null, mapDispatchToProps)(StatsRow);

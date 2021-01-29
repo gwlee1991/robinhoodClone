@@ -3,8 +3,7 @@ import { Route } from 'react-router-dom';
 import Header from './Header/Header';
 import Newsfeed from './Newsfeed/Newsfeed';
 import Stats from './Stats/Stats';
-import StockInfo from './StockInfo/StockInfo';
-import PurchaseCard from './PurchaseCard/PurchaseCard';
+import Stock from './Stock';
 
 function Main() {
 	return (
@@ -16,8 +15,7 @@ function Main() {
 				<div className="app-container">
 					<Route path="/" exact component={Newsfeed} />
 					<Route path="/" exact component={Stats} />
-					<Route path="/stock/:stock" component={StockInfo} />
-					<Route path="/stock/:stock" component={PurchaseCard} />
+					<Route path="/stock/:stock" component={Stock} />
 				</div>
 			</div>
 		</div>

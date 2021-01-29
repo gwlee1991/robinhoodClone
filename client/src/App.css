@@ -186,3 +186,14 @@ ul {
 .space-between {
   justify-content: space-between;
 }
+
+input {
+  background-color: transparent;
+  box-shadow: none;
+  color:white;
+  border: none;
+}
+
+input:focus {
+  outline: none;
+}
