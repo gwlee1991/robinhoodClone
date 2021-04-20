@@ -3,7 +3,7 @@ import Search from '../../../../images/search.svg';
 import "./SearchBar.css";
 import { fetchSearchResults, clearSearchResults } from '../../../../actions/data';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 
 class SearchBar extends React.Component {
 	constructor(props){
@@ -30,12 +30,16 @@ class SearchBar extends React.Component {
 		return this.props.searchResults.map((result, i) => {
 			const { symbol, description} = result;
 			return (
-				<Link to={`/stock/${symbol}`} style={{ textDecoration: 'none'}}>
+				<div onMouseDown={(e) => {
+					e.preventDefault();
+					this.setState({ focused: false })
+					this.props.history.push(`/stock/${symbol}`);
+				}} key={symbol} >
 					<div className="header-search-result-items" key={description + i}>
 						<span className="header-search-header-text search-symbol">{symbol}</span>
 						<span className="header-search-header-text search description">{description}</span>
 					</div>
-				</Link>
+				</div>
 			)
 		})
 	}
@@ -66,22 +70,25 @@ class SearchBar extends React.Component {
 		this.props.fetchSearchResults(this.state.searchTerm);
 	}
 
-	handleFocus = e => {
+	turnOnFocus = e => {
 		e.preventDefault();
-		this.setState((prevState) => {
-			return {
-				focused: !prevState.focused
-			}
-		})
+		console.log('turn on focus')
+		this.setState({ focused: true });
+	}
+
+	turnOffFocus = e => {
+		e.preventDefault();
+		console.log('turn off focus')
+		this.setState({ focused: false });
 	}
 	
 	render(){
 		return (
 			<div id="search" className={this.state.focused ? 'header-search-section focus' : "header-search-section"}>
-				<div className="header-search-container">
+				<div tabIndex="0" onBlur={this.turnOffFocus} className="header-search-container">
 					<div className="header-search">
 						<img src={Search} alt="search-vector" width="20px" style={{ marginLeft: "20px" }} />
-						<input onFocus={this.handleFocus} onBlur={this.handleFocus} placeholder="Search" onChange={this.handleChange} type="text" />
+						<input onFocus={this.turnOnFocus} placeholder="Search" onChange={this.handleChange} type="text" />
 					</div>
 					{this.renderSearchResults()}
 				</div>
@@ -90,9 +97,9 @@ class SearchBar extends React.Component {
 	}
 }
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
 	return {
-		searchResults: state.searchResults.data
+		searchResults: state.searchResults.data,
 	}
 }
 
@@ -103,4 +110,4 @@ const mapDispatchToProps = dispatch => {
 	}
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(SearchBar);
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(SearchBar));

@@ -59,9 +59,9 @@ class StockInfo extends React.Component {
 				<section>
 					<AnalystRating rating={this.props.stockInfo.name ? this.props.stockInfo.info.recommendation[0] : {}} />
 				</section>
-				{/* <section>
+				<section>
 					<Earnings earning={this.props.stockInfo.name ? this.props.stockInfo.info.earnings : null } />
-				</section> */}
+				</section>
 				<section>
 					History section
 				</section>

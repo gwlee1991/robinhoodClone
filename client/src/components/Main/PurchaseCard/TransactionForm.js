@@ -198,6 +198,13 @@ class TransactionForm extends React.Component {
 	}
 
 	handleSharesInput = e => {
+		if (e.target.value === '') {
+			this.setState({
+				shares: '',
+				estimateCost: 0
+			})
+		}
+
 		if (acceptableInput.includes(e.target.value[e.target.value.length - 1])) {
 			this.setState({
 				shares: e.target.value,
@@ -257,7 +264,7 @@ class TransactionForm extends React.Component {
 						${this.props.currentUser.buyingPower} Buying Power Available
 					</span>
 				);
-			}
+			} 
 		}
 	};
 
@@ -346,3 +353,4 @@ const mapDispatchToProps = (dispatch) => {
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(TransactionForm);
+	

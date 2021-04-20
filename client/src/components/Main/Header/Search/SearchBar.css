@@ -17,12 +17,15 @@
 }
 
 .header-search-container {
-  height: 36px;
   width: 100%;
   display: flex;
   flex-direction: column;
   padding-top: 10px;
   padding-bottom: 10px;
+}
+
+.header-search-container {
+  outline: none;
 }
 
 .header-search-section.focus {
